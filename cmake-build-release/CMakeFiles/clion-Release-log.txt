@@ -1,0 +1,5 @@
+"C:\Program Files\JetBrains\CLion 2024.1.3\bin\cmake\win\x64\bin\cmake.exe" -G "Visual Studio 17 2022" -S C:\Users\otter\Desktop\projects\RunasCpp -B C:\Users\otter\Desktop\projects\RunasCpp\cmake-build-release
+-- Selecting Windows SDK version 10.0.22621.0 to target Windows 10.0.19045.
+-- Configuring done (0.1s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/Users/otter/Desktop/projects/RunasCpp/cmake-build-release
