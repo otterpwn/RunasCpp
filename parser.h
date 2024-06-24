@@ -14,14 +14,13 @@ public:
     // setters for optional arguments
     void SetUsername(const std::string& username);
     void SetPassword(const std::string& password);
-    void SetDomain(const std::optional<std::string>& domain);
+    void SetDomain(const std::string& domain);
     void SetProcessPath(const std::string& processPath);
     void SetArgs(const std::vector<std::string>& args);
 
-    // getters for parsed arguments
     const std::string& GetUsername() const;
     const std::string& GetPassword() const;
-    const std::optional<std::string>& GetDomain() const;
+    const std::string& GetDomain() const;
     const std::string& GetProcessPath() const;
     const std::vector<std::string>& GetArgs() const;
 
@@ -31,7 +30,7 @@ public:
 private:
     std::string username_;
     std::string password_;
-    std::optional<std::string> domain_;
+    std::string domain_;
     std::string processPath_;
     std::vector<std::string> args_;
 };

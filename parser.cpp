@@ -1,6 +1,7 @@
-#include "parser.h"
 #include <iostream>
 #include <string_view>
+
+#include "parser.h"
 
 ArgumentParser::ArgumentParser() = default;
 
@@ -12,7 +13,7 @@ void ArgumentParser::SetPassword(const std::string& password) {
     password_ = password;
 }
 
-void ArgumentParser::SetDomain(const std::optional<std::string>& domain) {
+void ArgumentParser::SetDomain(const std::string& domain) {
     domain_ = domain;
 }
 
@@ -32,7 +33,7 @@ const std::string& ArgumentParser::GetPassword() const {
     return password_;
 }
 
-const std::optional<std::string>& ArgumentParser::GetDomain() const {
+const std::string& ArgumentParser::GetDomain() const {
     return domain_;
 }
 
@@ -47,7 +48,7 @@ const std::vector<std::string>& ArgumentParser::GetArgs() const {
 bool ArgumentParser::ParseArguments(int argc, char* argv[]) {
     // handle common errors: no arguments or missing required argument
     if (argc < 3) {
-        std::cerr << "Error: Missing required arguments. Usage: " << argv[0] << " --username <username> --processpath <processpath> [--domain <domain>] [--args arg1 arg2 ...]" << std::endl;
+        std::cerr << "[!] Missing required arguments. Usage: RunasCpp.exe --username <username> --password <password> [--domain <domain>] --processpath <processpath> [--args arg1 arg2 ...]" << std::endl;
         return false;
     }
 
@@ -56,7 +57,7 @@ bool ArgumentParser::ParseArguments(int argc, char* argv[]) {
 
         if (arg == "--username") {
             if (i + 1 >= argc) {
-                std::cerr << "Error: Missing username after --username." << std::endl;
+                std::cerr << "[!] Missing username after --username." << std::endl;
                 return false;
             }
             SetUsername(argv[i + 1]);
@@ -64,7 +65,7 @@ bool ArgumentParser::ParseArguments(int argc, char* argv[]) {
             ++i;
         } else if (arg == "--password") {
             if (i + 1 >= argc) {
-                std::cerr << "Error: Missing password after --password." << std::endl;
+                std::cerr << "[!] Missing password after --password." << std::endl;
                 return false;
             }
             SetPassword(argv[i + 1]);
@@ -72,7 +73,7 @@ bool ArgumentParser::ParseArguments(int argc, char* argv[]) {
             ++i;
         } else if (arg == "--domain") {
             if (i + 1 >= argc) {
-                std::cerr << "Error: Missing domain after --domain." << std::endl;
+                std::cerr << "[!] Missing domain after --domain." << std::endl;
                 return false;
             }
             SetDomain(argv[i + 1]);
@@ -80,7 +81,7 @@ bool ArgumentParser::ParseArguments(int argc, char* argv[]) {
             ++i;
         } else if (arg == "--processpath") {
                 if (i + 1 >= argc) {
-                    std::cerr << "Error: Missing process path after --processpath." << std::endl;
+                    std::cerr << "[!] Missing process path after --processpath." << std::endl;
                     return false;
                 }
                 SetProcessPath(argv[i + 1]);
@@ -98,7 +99,7 @@ bool ArgumentParser::ParseArguments(int argc, char* argv[]) {
             // rewind i to the argument that broke the loop (might be another option)
             --i;
         } else {
-            std::cerr << "Warning: Unknown argument: " << arg << std::endl;
+            std::cerr << "[!] Unknown argument: " << arg << std::endl;
         }
     }
 
