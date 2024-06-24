@@ -304,6 +304,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="C:\Users\otter\Desktop\projects\RunasCpp\main.cpp" />
     <ClCompile Include="C:\Users\otter\Desktop\projects\RunasCpp\parser.cpp" />
     <ClInclude Include="C:\Users\otter\Desktop\projects\RunasCpp\parser.h" />
+    <ClCompile Include="C:\Users\otter\Desktop\projects\RunasCpp\util.cpp" />
+    <ClInclude Include="C:\Users\otter\Desktop\projects\RunasCpp\util.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\otter\Desktop\projects\RunasCpp\cmake-build-release\ZERO_CHECK.vcxproj">

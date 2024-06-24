@@ -1,25 +1,35 @@
-#include "parser.h"
 #include <iostream>
+
+#include "parser.h"
+#include "util.h"
 
 int main(int argc, char* argv[]) {
     ArgumentParser parser;
 
-    if (!parser.ParseArguments(argc, argv)) {
-        return 1;
-    }
+    if (!parser.ParseArguments(argc, argv)) return 1;
 
     // access parsed arguments
-    std::cout << "Username: " << parser.GetUsername() << std::endl;
-    std::cout << "Password: " << parser.GetPassword() << std::endl;
-    if (parser.GetDomain()) {
-        std::cout << "Domain: " << parser.GetDomain().value() << std::endl;
+    // mandatory arguments
+    std::string username = parser.GetUsername();
+    std::string password = parser.GetPassword();
+    std::string processPath = parser.GetProcessPath();
+
+    // optional arguments
+    std::string domain;
+    std::vector<std::string> processArgs = {};
+
+    if (!parser.GetDomain().empty()) {
+        domain = parser.GetDomain();
+        std::cout << "domain supplied: " << domain << std::endl;
+    } else {
+        domain = getLocalHostname();
+        if (domain.empty()) {
+            std::cerr << "[!] Domain not supplied and failed getting hostname... quitting" << std::endl;
+            return 1;
+        }
     }
-    std::cout << "Process Path: " << parser.GetProcessPath() << std::endl;
-    std::cout << "Process Arguments: ";
-    for (const std::string& arg : parser.GetArgs()) {
-        std::cout << arg << " ";
-    }
-    std::cout << std::endl;
+
+    processArgs = parser.GetArgs();
 
     return 0;
 }

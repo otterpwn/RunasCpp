@@ -7,9 +7,15 @@
     <ClCompile Include="C:\Users\otter\Desktop\projects\RunasCpp\parser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\otter\Desktop\projects\RunasCpp\util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\otter\Desktop\projects\RunasCpp\parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\otter\Desktop\projects\RunasCpp\util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
